@@ -324,6 +324,18 @@ function render(){
 }
 
 render();
+
+// Pre-remplissage depuis un autre outil (ex: Recherche-Mail) via ?url=...
+(function prefillFromParam(){
+  try {
+    const incoming = new URLSearchParams(window.location.search).get('url');
+    if (incoming){
+      document.getElementById('inp').value = incoming;
+      onInput();
+      analyse();
+    }
+  } catch(e){}
+})();
 </script>
 </body>
 </html>
